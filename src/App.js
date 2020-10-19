@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+//Redux
+import { Provider } from "react-redux";
+import store, { rrfProps } from "./store";
+// Firestore
+import firebase from "./firebase-config";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+
+//Components and pages
+import NavBar from "./components/NavBar";
+import SignIn from "./pages/SignIn/SignIn";
+
+const App = () => (
+  <Provider store={store}>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <Router>
+        <Fragment>
+          <NavBar />
+          <Route exact path="/" component={SignIn} />
+        </Fragment>
+      </Router>
+    </ReactReduxFirebaseProvider>
+  </Provider>
+);
 
 export default App;
