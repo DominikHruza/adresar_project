@@ -8,6 +8,7 @@ export const setAlert = (msg, alertType) => (dispatch) => {
     payload: { msg, alertType, id },
   });
 
-  setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), 3000);
-  setTimeout(() => dispatch({ type: RESET_LOGIN, payload: id }), 3000);
+  //remove alert and reset login state
+  setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), 5000);
+  setTimeout(() => dispatch({ type: RESET_LOGIN, payload: id }), 5000);
 };

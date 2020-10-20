@@ -5,6 +5,7 @@ import { setAlert } from "../../actions/alert";
 import Alert from "../../components/Alert";
 import "./sign-in-style.css";
 import { validatePassword } from "../../helpers/password-validation";
+
 const SignIn = ({ signIn, setAlert, authError }) => {
   const [inputState, setInputState] = useState({
     email: "",
@@ -12,7 +13,7 @@ const SignIn = ({ signIn, setAlert, authError }) => {
   });
 
   useEffect(() => {
-    if (authError) setAlert("Login failed", "danger");
+    if (authError) setAlert("Wrong credentials!", "danger");
   }, [authError]);
 
   const handleInputChange = (e) => {
@@ -21,7 +22,17 @@ const SignIn = ({ signIn, setAlert, authError }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    validatePassword(inputState.password);
+    const isValid = validatePassword(inputState.password);
+    if (!isValid) {
+      setAlert(
+        `Password must be minimum of 6 characters long.
+         Must contain at least one number. 
+         Must contain at least one special character ( !,#,$,+,-)`,
+        "danger"
+      );
+      return;
+    }
+
     signIn({ ...inputState });
   };
 
@@ -44,7 +55,7 @@ const SignIn = ({ signIn, setAlert, authError }) => {
           <div className="form-group">
             <label htmlFor="password">Password</label>
             <input
-              type="text"
+              type="password"
               name="password"
               id="password"
               onChange={handleInputChange}

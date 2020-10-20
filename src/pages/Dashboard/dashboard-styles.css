@@ -1,0 +1,18 @@
+.add-contact-btn {
+  display: inline-block;
+  text-decoration: none;
+  background: #28df99;
+  color: #fff;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  vertical-align: middle;
+  font-size: 1.5rem;
+  transition: 0.4s;
+  border: none;
+  margin: 1rem;
+}
+
+.add-contact-btn:hover {
+  background: #79d70f;
+}

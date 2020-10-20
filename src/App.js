@@ -1,5 +1,8 @@
 import React, { Fragment } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import ProtectedRoute from "./helpers/ProtectedRoute";
+import Dashboard from "./pages/Dashboard/Dashboard";
+import AddContact from "./pages/AddContact/AddContact";
 import "./App.css";
 //Redux
 import { Provider } from "react-redux";
@@ -22,6 +25,8 @@ const App = () => (
         <Fragment>
           <NavBar />
           <Route exact path="/" component={SignIn} />
+          <ProtectedRoute exact path="/adresar" component={Dashboard} />
+          <ProtectedRoute exact path="/kontakt" component={AddContact} />
         </Fragment>
       </Router>
     </ReactReduxFirebaseProvider>

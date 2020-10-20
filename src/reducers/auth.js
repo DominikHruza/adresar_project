@@ -2,6 +2,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   RESET_LOGIN,
+  SIGN_OUT,
 } from "../actions/action-types";
 
 const initState = {
@@ -23,6 +24,9 @@ const authReducer = (state = initState, action) => {
         ...state,
         authFailed: true,
       };
+    case SIGN_OUT:
+      return state;
+
     case RESET_LOGIN:
       return {
         ...state,
