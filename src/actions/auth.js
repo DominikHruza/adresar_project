@@ -17,7 +17,13 @@ export const signIn = (creds) => {
           firebase
             .auth()
             .createUserWithEmailAndPassword(creds.email, creds.password)
-            .then(() => {
+            .then((data) => {
+              //Create user in database and save uid
+              const dbRef = firebase.database().ref("users");
+              dbRef.push({
+                email: creds.email,
+                userId: data.user.uid,
+              });
               dispatch({ type: LOGIN_SUCCESS });
             })
             //On register fail

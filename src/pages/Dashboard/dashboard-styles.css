@@ -10,9 +10,125 @@
   font-size: 1.5rem;
   transition: 0.4s;
   border: none;
-  margin: 1rem;
+  margin: 1rem 0;
 }
 
 .add-contact-btn:hover {
   background: #79d70f;
+}
+#dashboard .card {
+  background: #f4f4f4f4;
+  margin-top: 3rem;
+}
+.card-item-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(6, 1fr);
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.card-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  margin: 0.5rem 0.5rem;
+}
+
+.avatar {
+  align-self: center;
+  vertical-align: middle;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#dashboard .pagination {
+  display: flex;
+  margin-top: 3rem;
+  font-weight: 500;
+  justify-content: center;
+}
+
+#dashboard .pagination li {
+  cursor: pointer;
+}
+
+#dashboard .filter {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 6rem;
+  align-content: center;
+  margin-top: 2rem;
+}
+
+#dashboard .filter label {
+  font-size: 1rem;
+  font-weight: none;
+}
+
+#dashboard .filter select {
+  border: 0px;
+  outline: none !important;
+  border-bottom: 2px solid #333;
+}
+
+#dashboard .filter-group {
+  width: 50%;
+}
+
+#dashboard .filter-group {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#dashboard .filter-contacts select {
+  min-width: 7rem;
+}
+#dashboard .items-count-select select {
+  width: 5rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-controls {
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+}
+/* Small screens */
+@media only screen and (max-width: 768px) {
+  #dashboard .container {
+    max-width: 350px !important;
+  }
+
+  .card-item-wrapper {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+
+  .dashboard-controls {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #dashboard .filter-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #dashboard .filter-contacts {
+    margin-left: 0.5rem;
+  }
+
+  #dashboard .items-count-select select {
+    margin-bottom: 1rem;
+    margin-right: 4rem;
+  }
 }
