@@ -1,6 +1,15 @@
+body {
+  background-color: #f4f4f4 !important;
+  font-family: "Ubuntu", sans-serif !important;
+}
+
 .container {
   max-width: 1500px !important;
 }
 .navbar-collapse.collapse.in {
   display: block !important;
+}
+
+.contact-form {
+  margin: auto;
 }

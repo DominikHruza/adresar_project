@@ -5,8 +5,9 @@ import { setAlert } from "../../actions/alert";
 import Alert from "../../components/Alert";
 import "./sign-in-style.css";
 import { validatePassword } from "../../helpers/password-validation";
+import { withRouter } from "react-router-dom";
 
-const SignIn = ({ signIn, setAlert, authError }) => {
+const SignIn = ({ signIn, setAlert, authError, history, auth }) => {
   const [inputState, setInputState] = useState({
     email: "",
     password: "",
@@ -16,6 +17,12 @@ const SignIn = ({ signIn, setAlert, authError }) => {
     if (authError) setAlert("Wrong credentials!", "danger");
   }, [authError]);
 
+  useEffect(() => {
+    if (auth.uid) {
+      history.push("/adresar");
+    }
+  }, [auth.uid]);
+
   const handleInputChange = (e) => {
     setInputState({ ...inputState, [e.target.name]: e.target.value });
   };
@@ -23,13 +30,8 @@ const SignIn = ({ signIn, setAlert, authError }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validatePassword(inputState.password);
-    if (!isValid) {
-      setAlert(
-        `Password must be minimum of 6 characters long.
-         Must contain at least one number. 
-         Must contain at least one special character ( !,#,$,+,-)`,
-        "danger"
-      );
+    if (!isValid || inputState.email === "") {
+      setAlert("Wrong credentials!", "danger");
       return;
     }
 
@@ -80,6 +82,7 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     authError: state.auth.authFailed,
+    auth: state.firebase.auth,
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(SignIn));

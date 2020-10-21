@@ -7,6 +7,7 @@ const ProtectedRoute = ({ component: Component, auth, ...rest }) => (
     {...rest}
     render={(props) => {
       if (auth.isLoaded) {
+        console.log(auth.uid);
         return !auth.uid ? <Redirect to="/" /> : <Component {...props} />;
       }
     }}

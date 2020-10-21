@@ -7,7 +7,7 @@ import {
   reduxFirestore,
   createFirestoreInstance,
 } from "redux-firestore";
-import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
+import { getFirebase } from "react-redux-firebase";
 import firebaseConfig from "./firebase-config";
 import firebase from "firebase/app";
 const initState = {};

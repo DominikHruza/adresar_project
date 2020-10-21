@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { connect } from "react-redux";
-import { setAlert } from "../../actions/alert";
-import Alert from "../../components/Alert";
-import "./form-contact-styles.css";
-import { createContact } from "../../actions/createContact";
+import { setAlert } from "../actions/alert";
+import Alert from "./Alert";
+import { editContact } from "../actions/editContact";
+import { createContact } from "../actions/createContact";
+import { withRouter } from "react-router-dom";
 
-const FormContact = ({ setAlert, createContact, uid }) => {
+const FormContact = ({
+  setAlert,
+  createContact,
+  uid,
+  contact,
+  onEdit,
+  editContact,
+  history,
+}) => {
   const [inputState, setInputState] = useState({
     name: "",
     lastName: "",
@@ -13,6 +23,12 @@ const FormContact = ({ setAlert, createContact, uid }) => {
     contact: "",
     contactType: "",
   });
+
+  const { register } = useForm({ defaultValues: contact });
+  useEffect(() => {
+    // if contact object is not empty set inital values
+    if (Object.keys(contact).length > 0) setInputState({ ...contact });
+  }, []);
 
   const controlSubformAlert = () => {
     if (inputState.contact === "" || inputState.contactType === "") {
@@ -35,14 +51,21 @@ const FormContact = ({ setAlert, createContact, uid }) => {
     setInputState({ ...inputState, [e.target.name]: e.target.value });
   };
 
-  const handleAddContact = (e) => {
+  const handleAddEditContact = (e) => {
     e.preventDefault();
     if (!makeContactValidations(inputState)) {
       controlSubformAlert();
       return;
     }
 
-    createContact({ uid, ...inputState });
+    if (onEdit) {
+      editContact({ id: contact.id, ...inputState });
+      setAlert("Contact updated succesfully!", "success");
+      history.push(`/kontakt/detalji/${contact.id}`);
+    } else {
+      createContact({ uid, ...inputState });
+      setAlert("Contact added succesfully!", "success");
+    }
   };
 
   const makeContactValidations = (inputsData) => {
@@ -74,11 +97,12 @@ const FormContact = ({ setAlert, createContact, uid }) => {
   return (
     <form className="mt-4">
       <div className="container">
-        <div className="col-lg-6">
+        <div className="col-lg-6 contact-form">
           <Alert />
           <div className="form-group">
             <label htmlFor="contactName">Name</label>
             <input
+              ref={register}
               name="name"
               onChange={handleInputChange}
               type="text"
@@ -90,6 +114,7 @@ const FormContact = ({ setAlert, createContact, uid }) => {
           <div className="form-group">
             <label htmlFor="contactLastname">Lastname</label>
             <input
+              ref={register}
               name="lastName"
               onChange={handleInputChange}
               type="text"
@@ -101,6 +126,7 @@ const FormContact = ({ setAlert, createContact, uid }) => {
           <div className="form-group">
             <label htmlFor="contactBirthdate">Birthdate</label>
             <input
+              ref={register}
               name="birthDate"
               type="date"
               className="form-control"
@@ -114,6 +140,7 @@ const FormContact = ({ setAlert, createContact, uid }) => {
               <div className="form-group col-md-6 col-sm-6 contact-type-group">
                 <label htmlFor="inputCity">Contact</label>
                 <input
+                  ref={register}
                   name="contact"
                   onChange={handleInputChange}
                   type="text"
@@ -125,6 +152,7 @@ const FormContact = ({ setAlert, createContact, uid }) => {
               <div className="form-group col-md-4 col-sm-4 contact-type-group">
                 <label htmlFor="inputState">Type</label>
                 <select
+                  ref={register}
                   name="contactType"
                   onChange={handleInputChange}
                   id="inputState"
@@ -144,11 +172,11 @@ const FormContact = ({ setAlert, createContact, uid }) => {
           </div>
 
           <button
-            onClick={handleAddContact}
+            onClick={handleAddEditContact}
             type="submit"
             className="btn btn-success mt-3 "
           >
-            Add Contact
+            {onEdit ? "Edit Contact" : "Add Contact"}
           </button>
         </div>
       </div>
@@ -159,11 +187,16 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setAlert: (message, type) => dispatch(setAlert(message, type)),
     createContact: (contactData) => dispatch(createContact(contactData)),
+    editContact: (contactData) => dispatch(editContact(contactData)),
   };
 };
-const mapStateToProps = ({ firebase }) => {
+const mapStateToProps = (state) => {
   return {
-    uid: firebase.auth.uid,
+    uid: state.firebase.auth.uid,
+    contact: state.activeContact,
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps)(FormContact);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(FormContact));

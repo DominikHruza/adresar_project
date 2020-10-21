@@ -17,12 +17,32 @@
   background: #79d70f;
 }
 #dashboard .card {
-  background: #f4f4f4f4;
+  color: #333;
+  background: #fff;
   margin-top: 3rem;
+  max-width: 1100px;
+  margin: 1.5rem auto;
+}
+
+#dashboard .card .favorite-btn,
+#dashboard .card .details-btn {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+#dashboard .card .favorite-icon,
+#dashboard .card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+#dashboard .isFavorite {
+  color: #d9bd00 !important;
 }
 .card-item-wrapper {
   display: grid !important;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
   justify-content: space-around;
   align-items: center;
   align-content: center;
@@ -36,6 +56,14 @@
   align-content: center;
   align-self: center;
   margin: 0.5rem 0.5rem;
+}
+
+.card-item p {
+  min-height: 1.5rem;
+  font-size: 1.3rem;
+}
+.card-item h5 {
+  font-weight: 800;
 }
 
 .avatar {
@@ -75,6 +103,7 @@
   border: 0px;
   outline: none !important;
   border-bottom: 2px solid #333;
+  background: #f4f4f4;
 }
 
 #dashboard .filter-group {
@@ -86,8 +115,24 @@
   justify-content: flex-end;
 }
 
+#dashboard .filter-contacts {
+  margin-right: 1.5rem;
+}
+
 #dashboard .filter-contacts select {
-  min-width: 7rem;
+  min-width: 8rem;
+}
+#dashboard .filter-contacts input {
+  width: 8rem;
+  height: 2.2rem;
+  padding: 10px;
+  border: 1px solid #666;
+  border-radius: 5px;
+  margin-top: 0.3rem;
+  margin-right: 0.5rem;
+}
+#dashboard .filter-sort select {
+  width: 10rem;
 }
 #dashboard .items-count-select select {
   width: 5rem;
@@ -99,6 +144,7 @@
   align-content: center;
   justify-content: space-between;
 }
+
 /* Small screens */
 @media only screen and (max-width: 768px) {
   #dashboard .container {
@@ -123,8 +169,8 @@
     flex-direction: column;
   }
 
-  #dashboard .filter-contacts {
-    margin-left: 0.5rem;
+  #dashboard .filter-contacts select {
+    margin-right: 3rem;
   }
 
   #dashboard .items-count-select select {

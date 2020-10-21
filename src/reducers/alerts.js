@@ -1,4 +1,8 @@
-import { SET_ALERT, REMOVE_ALERT, RESET_LOGIN } from "../actions/action-types";
+import {
+  SET_ALERT,
+  REMOVE_ALERT,
+  CONTACT_FETCH_SUCCESS,
+} from "../actions/action-types";
 
 const initialState = [];
 

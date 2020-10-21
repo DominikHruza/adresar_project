@@ -14,8 +14,5 @@ export const createContact = (contactData) => {
     } catch (error) {
       dispatch({ type: CONTACT_CREATE_ERROR });
     }
-
-    console.log(contactData);
-    //dispatch({});
   };
 };

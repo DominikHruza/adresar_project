@@ -16,17 +16,17 @@ const NavLinks = ({ signOut, auth }) => {
 
   const authLinks = (
     <Fragment>
-      <li to="" className="nav-item active">
+      <li className="nav-item active">
         <Link to="/adresar" className="nav-link" href="#">
           Dashboard <span className="sr-only">(current)</span>
         </Link>
       </li>
-      <li to="" className="nav-item">
-        <Link to="" className="nav-link" href="#">
-          Link
+      <li className="nav-item">
+        <Link to="/adresar/omiljeni" className="nav-link" href="#">
+          Favorites
         </Link>
       </li>
-      <li to="" className="nav-item">
+      <li className="nav-item">
         <Link to="/" onClick={signOut} className="nav-link" href="#">
           Sign Out
         </Link>
