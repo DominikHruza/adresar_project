@@ -73,6 +73,11 @@
   height: 90px;
   border-radius: 50%;
   display: inline-block;
+  background: #f4f4f4;
+}
+
+.avatar i {
+  margin: 1.5rem;
 }
 
 #dashboard .pagination {
@@ -148,7 +153,7 @@
 /* Small screens */
 @media only screen and (max-width: 768px) {
   #dashboard .container {
-    max-width: 350px !important;
+    max-width: 500px !important;
   }
 
   .card-item-wrapper {
@@ -166,15 +171,42 @@
 
   #dashboard .filter-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    align-content: flex-end;
   }
-
+  #dashboard .filter-sort,
+  #dashboard .items-count-select {
+    margin-left: 6rem;
+  }
   #dashboard .filter-contacts select {
-    margin-right: 3rem;
+    margin-left: 1rem;
   }
 
+  #dashboard .filter-contacts {
+    margin: 3rem;
+  }
   #dashboard .items-count-select select {
     margin-bottom: 1rem;
     margin-right: 4rem;
+  }
+  #inputState {
+    margin: 0;
+  }
+  #dashboard .card .card-icons {
+    display: flex;
+    justify-content: center;
+  }
+
+  .avatar {
+    margin-left: 5rem;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: inline-block;
+    background: #f4f4f4;
+  }
+
+  .avatar i {
+    margin: 1.5rem;
   }
 }

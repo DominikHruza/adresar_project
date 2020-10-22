@@ -31,7 +31,7 @@ const ContactDetails = ({
   return (
     <div id="contact-details" className="container">
       <Alert />
-      <ContactCard contactData={contact} />
+      <ContactCard contactData={contact} onDetails={true} />
       <div className="action-icons-container">
         <ul className="list-inline m-0">
           <li className="list-inline-item">

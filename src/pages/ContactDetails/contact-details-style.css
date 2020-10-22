@@ -33,3 +33,17 @@
 #contact-details .action-icons-container i {
   font-size: 1.2rem;
 }
+
+#contact-details .avatar {
+  margin: 1rem auto;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #f4f4f4;
+}
+
+#contact-details .avatar i {
+  margin: 1.5rem;
+  font-size: 2rem;
+}

@@ -5,8 +5,8 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
-        <a className="navbar-brand" href="#">
-          Navbar
+        <a className="navbar-brand" href="/adresar">
+          Adresar
         </a>
         <button
           className="navbar-toggler"

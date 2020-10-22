@@ -13,3 +13,20 @@ body {
 .contact-form {
   margin: auto;
 }
+
+.card .favorite-btn,
+.card .details-btn {
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.card .favorite-icon,
+.card i {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.isFavorite {
+  color: #d9bd00 !important;
+}

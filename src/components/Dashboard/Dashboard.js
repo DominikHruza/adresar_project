@@ -21,7 +21,7 @@ const Dashboard = ({
   const [contacts, setContacts] = useState([]);
   const [pageContacts, setPagedContacts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(3);
+  const [itemsPerPage, setItemsPerPage] = useState(15);
   const [searchBy, setSearchBy] = useState("name");
   const [sortBy, setSortBy] = useState("");
 
@@ -35,7 +35,14 @@ const Dashboard = ({
 
   useEffect(() => {
     if (contactItems.length > 0) {
-      setContacts(contactItems);
+      if (filterFavorites) {
+        const filteredFavorites = contactItems.filter((item) => {
+          return item.isFavorite === true;
+        });
+        setContacts(filteredFavorites);
+      } else {
+        setContacts(contactItems);
+      }
     }
   }, [contactItems]);
 
@@ -48,25 +55,13 @@ const Dashboard = ({
   const renderContacts = (currentContacts) => {
     if (currentContacts.length > 0)
       return currentContacts.map((item) => {
-        if (filterFavorites) {
-          if (item.isFavorite) {
-            return (
-              <ContactCard
-                contactData={item}
-                key={item.id}
-                onContactCardClick={onContactCardClick}
-              />
-            );
-          }
-        } else {
-          return (
-            <ContactCard
-              contactData={item}
-              key={item.id}
-              onContactCardClick={onContactCardClick}
-            />
-          );
-        }
+        return (
+          <ContactCard
+            contactData={item}
+            key={item.id}
+            onContactCardClick={onContactCardClick}
+          />
+        );
       });
   };
 
@@ -111,6 +106,7 @@ const Dashboard = ({
 
   const onPerPageChange = (value) => {
     setItemsPerPage(parseInt(value));
+    setCurrentPage(1);
   };
 
   const onContactCardClick = (cardId) => {
@@ -131,17 +127,16 @@ const Dashboard = ({
             <i className="fas fa-plus"></i>
           </button>
           <div className="filter-group">
-            <SortFilter onSortBySelect={onSortBySelect} />
             <ContactFilter
               onSearchInput={onSearchInput}
               onSearchBySelect={onSearchBySelect}
             />
+            <SortFilter onSortBySelect={onSortBySelect} />
             <ItemsPerPageFilter onPerPageChange={onPerPageChange} />
           </div>
         </div>
         <Alert />
         {renderContacts(pageContacts)}
-
         <Paginator
           itemsPerPage={itemsPerPage}
           maxItems={contacts.length}

@@ -1,5 +1,5 @@
 import React from "react";
-import faker from "faker";
+
 import { addFavorite, removeFavorite } from "../actions/editContact";
 import { connect } from "react-redux";
 const ContactCard = ({
@@ -7,6 +7,7 @@ const ContactCard = ({
   onContactCardClick,
   addFavorite,
   removeFavorite,
+  onDetails,
 }) => {
   const handleFavoriteAddRemove = () => {
     if (contactData.isFavorite) {
@@ -20,8 +21,8 @@ const ContactCard = ({
     <div className="card">
       <div className="card-body">
         <div className="card-item-wrapper">
-          <div className="card-item">
-            <img src={faker.image.avatar()} alt="Avatar" className="avatar" />
+          <div className="card-item avatar">
+            <i className="fa fa-user" aria-hidden="true"></i>
           </div>
           <div className="card-item">
             <h5>Name</h5>
@@ -43,26 +44,36 @@ const ContactCard = ({
             <h5>Type</h5>
             <p>{contactData.contactType}</p>
           </div>
-          <div className="card-item">
-            <button className="favorite-btn" onClick={handleFavoriteAddRemove}>
-              <i
-                className={`${
-                  contactData.isFavorite
-                    ? "fas fa-star isFavorite"
-                    : "far fa-star"
-                } favorite-icon`}
-              ></i>
-            </button>
-          </div>
-          <div className="card-item">
-            <button
-              className="details-btn"
-              onClick={() => {
-                onContactCardClick(contactData.id);
-              }}
-            >
-              <i className="fas fa-search"></i>
-            </button>
+
+          <div className="card-icons">
+            <div className="card-item">
+              <button
+                className="favorite-btn"
+                onClick={handleFavoriteAddRemove}
+              >
+                <i
+                  className={`${
+                    contactData.isFavorite
+                      ? "fas fa-star isFavorite"
+                      : "far fa-star"
+                  } favorite-icon`}
+                ></i>
+              </button>
+            </div>
+            {!onDetails ? (
+              <div className="card-item">
+                <button
+                  className="details-btn"
+                  onClick={() => {
+                    onContactCardClick(contactData.id);
+                  }}
+                >
+                  <i className="fas fa-search"></i>
+                </button>
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         </div>
       </div>
