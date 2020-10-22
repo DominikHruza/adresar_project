@@ -1,221 +1,214 @@
 .add-contact-btn {
-  display: inline-block;
-  text-decoration: none;
-  background: #28df99;
-  color: #fff;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  vertical-align: middle;
-  font-size: 1.5rem;
-  transition: 0.4s;
-  border: none;
-  margin: 1rem 0;
+    text-decoration: none;
+    background: #28df99;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    vertical-align: middle;
+    font-size: 1.5rem;
+    transition: 0.4s;
+    border: none;
+    margin: 1rem 0;
 }
 
 .add-contact-btn:hover {
-  background: #26ac79;
+    background: #26ac79;
 }
 #dashboard .card {
-  color: #333;
-  background: #fff;
-  margin-top: 3rem;
-  max-width: 1100px;
-  margin: 1.5rem auto;
+    color: #333;
+    background: #fff;
+    margin-top: 3rem;
+    max-width: 1100px;
+    margin: 1.5rem auto;
 }
 
 #dashboard .card .favorite-btn,
 #dashboard .card .details-btn {
-  border: none;
-  background: none;
-  outline: none;
+    border: none;
+    background: none;
+    outline: none;
 }
 #dashboard .card .details-btn:hover {
-  color: #007bff;
+    color: #007bff;
 }
 #dashboard .card .favorite-btn:hover {
-  color: #d9bd00;
+    color: #d9bd00;
 }
 #dashboard .card .favorite-btn {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 #dashboard .card .favorite-icon,
 #dashboard .card i {
-  font-size: 1.7rem;
-  margin-bottom: 0.5rem;
+    font-size: 1.7rem;
+    margin-bottom: 0.5rem;
 }
 
 #dashboard .isFavorite {
-  color: #d9bd00 !important;
+    color: #d9bd00 !important;
 }
 .card-item-wrapper {
-  display: grid !important;
-  grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
-}
-
-.card-item {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-content: center;
-  align-self: center;
-  margin: 0.5rem 0.5rem;
-}
-
-.card-item p {
-  min-height: 1.5rem;
-  font-size: 1.2rem;
-}
-.card-item h5 {
-  font-weight: 800;
-}
-
-.avatar {
-  align-self: center;
-  vertical-align: middle;
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  display: inline-block;
-  background: #f4f4f4;
-}
-
-.avatar i {
-  margin: 1.5rem;
-}
-
-#dashboard .pagination {
-  display: flex;
-  margin-top: 3rem;
-  font-weight: 500;
-  justify-content: center;
-}
-
-#dashboard .pagination li {
-  cursor: pointer;
-}
-
-#dashboard .filter {
-  display: flex;
-  justify-content: space-around;
-  padding: 0 6rem;
-  align-content: center;
-  margin-top: 2rem;
-}
-
-#dashboard .filter label {
-  font-size: 1rem;
-  font-weight: none;
-}
-
-#dashboard .filter select {
-  border: 0px;
-  outline: none !important;
-  border-bottom: 2px solid #333;
-  background: #f4f4f4;
-}
-
-#dashboard .filter-group {
-  width: 50%;
-}
-
-#dashboard .filter-group {
-  display: flex;
-  justify-content: flex-end;
-}
-
-#dashboard .filter-contacts {
-  margin-right: 4rem;
-}
-
-#dashboard .filter-contacts select {
-  min-width: 8rem;
-}
-#dashboard .filter-contacts input {
-  width: 8rem;
-  height: 2.2rem;
-  padding: 10px;
-  border: 1px solid #666;
-  border-radius: 5px;
-  margin-top: 0.3rem;
-  margin-right: 0.5rem;
-}
-#dashboard .filter-sort select {
-  width: 10rem;
-}
-#dashboard .items-count-select select {
-  width: 5rem;
-  margin-bottom: 1rem;
-}
-
-.dashboard-controls {
-  display: flex;
-  align-content: center;
-  justify-content: space-between;
-}
-
-/* Small screens */
-@media only screen and (max-width: 768px) {
-  #dashboard .container {
-    max-width: 500px !important;
-  }
-
-  .card-item-wrapper {
     display: grid !important;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 2fr 2fr 2fr 2fr 2fr 2fr 1fr 1fr;
     justify-content: space-around;
     align-items: center;
     align-content: center;
-  }
+}
 
-  .dashboard-controls {
+.card-item {
+    text-align: center;
     display: flex;
     flex-direction: column;
-  }
-
-  #dashboard .filter-group {
-    display: flex;
-    flex-direction: column-reverse;
-    align-content: flex-end;
-  }
-  #dashboard .filter-sort,
-  #dashboard .items-count-select {
-    margin-left: 6rem;
-  }
-  #dashboard .filter-contacts select {
-    margin-left: 1rem;
-  }
-
-  #dashboard .filter-contacts {
-    margin: 3rem;
-  }
-  #dashboard .items-count-select select {
-    margin-bottom: 1rem;
-    margin-right: 4rem;
-  }
-  #inputState {
-    margin: 0;
-  }
-  #dashboard .card .card-icons {
-    display: flex;
     justify-content: center;
-  }
+    align-content: center;
+    align-self: center;
+    margin: 0.5rem 0.5rem;
+}
 
-  .avatar {
-    margin-left: 5rem;
+.card-item p {
+    min-height: 1.5rem;
+    font-size: 1.2rem;
+}
+.card-item h5 {
+    font-weight: 800;
+}
+
+.avatar {
+    align-self: center;
+    vertical-align: middle;
     width: 90px;
     height: 90px;
     border-radius: 50%;
     display: inline-block;
     background: #f4f4f4;
-  }
+}
 
-  .avatar i {
+.avatar i {
     margin: 1.5rem;
-  }
+}
+.dashboard-controls {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 1fr;
+}
+
+#dashboard .pagination {
+    display: flex;
+    margin-top: 3rem;
+    font-weight: 500;
+    justify-content: center;
+}
+
+#dashboard .pagination li {
+    cursor: pointer;
+}
+
+#dashboard .filter {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    margin-top: 2rem;
+}
+
+#dashboard .filter label {
+    font-size: 1rem;
+    font-weight: none;
+}
+
+#dashboard .filter select {
+    border: 0px;
+    outline: none !important;
+    border-bottom: 2px solid #333;
+    background: #f4f4f4;
+}
+
+#dashboard .control-item {
+    margin: 1rem 1rem;
+}
+
+#dashboard .sort-filter select,
+#dashboard .search-filter select {
+    width: 10rem;
+}
+
+#dashboard .search-filter input {
+    width: 10rem;
+}
+
+#dashboard .paginaton-filter label {
+    margin-top: 0.5rem;
+}
+
+#dashboard .search-filter input {
+    margin-right: 0.7rem;
+}
+
+.no-contacts-msg {
+    align-self: center;
+
+    color: #333;
+    opacity: 0.6;
+}
+/* Small screens */
+@media only screen and (max-width: 768px) {
+    #dashboard .container {
+        max-width: 500px !important;
+    }
+
+    .card-item-wrapper {
+        display: grid !important;
+        grid-template-columns: repeat(1, 1fr);
+        justify-content: space-around;
+        align-items: center;
+        align-content: center;
+    }
+
+    #inputState {
+        margin: 0;
+    }
+    #dashboard .card .card-icons {
+        display: flex;
+        justify-content: center;
+    }
+
+    .avatar {
+        margin-left: 5rem;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        display: inline-block;
+        background: #f4f4f4;
+    }
+
+    .avatar i {
+        margin: 1.5rem;
+    }
+
+    .dashboard-controls {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        align-content: center;
+    }
+
+    .add-btn-wrap {
+        grid-column: span 1;
+        order: 1;
+    }
+
+    .sort-filter {
+        grid-column: span 2;
+        order: 3;
+    }
+
+    .paginaton-filter {
+        grid-column: span 1;
+        order: 2;
+        justify-self: end;
+        grid-column-start: 2;
+        grid-column-end: 4;
+    }
+    .search-filter {
+        grid-column: span 3;
+        order: 4;
+    }
 }

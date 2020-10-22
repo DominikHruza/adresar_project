@@ -3,15 +3,18 @@ import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
 const ProtectedRoute = ({ component: Component, auth, ...rest }) => (
-  <Route
-    {...rest}
-    render={(props) => {
-      if (auth.isLoaded) {
-        console.log(auth.uid);
-        return !auth.uid ? <Redirect to="/" /> : <Component {...props} />;
-      }
-    }}
-  />
+    <Route
+        {...rest}
+        render={(props) => {
+            if (auth.isLoaded) {
+                return !auth.uid ? (
+                    <Redirect to="/" />
+                ) : (
+                    <Component {...props} />
+                );
+            }
+        }}
+    />
 );
 const mapStateToProps = ({ firebase }) => ({ auth: firebase.auth });
 

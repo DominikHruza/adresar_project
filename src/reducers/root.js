@@ -7,10 +7,10 @@ import contacts from "./contacts";
 import activeContact from "./activeContact";
 
 export default combineReducers({
-  alerts,
-  contacts,
-  activeContact,
-  auth: authReducer,
-  firebase: firebaseReducer,
-  firestore: firestoreReducer,
+    alerts,
+    contacts,
+    activeContact,
+    auth: authReducer,
+    firebase: firebaseReducer,
+    firestore: firestoreReducer,
 });

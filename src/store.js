@@ -3,9 +3,9 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/root";
 import {
-  getFirestore,
-  reduxFirestore,
-  createFirestoreInstance,
+    getFirestore,
+    reduxFirestore,
+    createFirestoreInstance,
 } from "redux-firestore";
 import { getFirebase } from "react-redux-firebase";
 import firebaseConfig from "./firebase-config";
@@ -13,19 +13,19 @@ import firebase from "firebase/app";
 const initState = {};
 const middleware = [thunk.withExtraArgument({ getFirebase, getFirestore })];
 const store = createStore(
-  rootReducer,
-  initState,
-  compose(
-    composeWithDevTools(applyMiddleware(...middleware)),
-    reduxFirestore(firebaseConfig)
-  )
+    rootReducer,
+    initState,
+    compose(
+        composeWithDevTools(applyMiddleware(...middleware)),
+        reduxFirestore(firebaseConfig)
+    )
 );
 
 export const rrfProps = {
-  firebase,
-  config: firebaseConfig,
-  dispatch: store.dispatch,
-  createFirestoreInstance,
+    firebase,
+    config: firebaseConfig,
+    dispatch: store.dispatch,
+    createFirestoreInstance,
 };
 
 export default store;
