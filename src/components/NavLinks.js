@@ -1,16 +1,16 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { signOut } from "../actions/auth";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavLinks = ({ signOut, auth }) => {
   const guestLinks = (
     <Fragment>
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link to="/" className="nav-link" href="#">
+          <NavLink to="/" className="nav-link">
             Sign Up
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </Fragment>
@@ -19,22 +19,38 @@ const NavLinks = ({ signOut, auth }) => {
   const authLinks = (
     <Fragment>
       <ul className="navbar-nav mr-auto">
-        <li className="nav-item active">
-          <Link to="/adresar" className="nav-link mr-4" href="#">
-            Dashboard <span className="sr-only">(current)</span>
-          </Link>
+        <li className="nav-item ">
+          <NavLink
+            exact
+            to="/adresar"
+            className="nav-link mr-4"
+            activeClassName="active"
+          >
+            Dashboard <span className="sr-only"></span>
+          </NavLink>
         </li>
         <li className="nav-item">
-          <Link to="/adresar/omiljeni" className="nav-link" href="#">
+          <NavLink
+            exact
+            to="/adresar/omiljeni"
+            className="nav-link"
+            activeClassName="active"
+          >
             Favorites
-          </Link>
+          </NavLink>
         </li>
       </ul>
       <ul className="navbar-nav ml-auto">
         <li className="nav-item">
-          <Link to="/" onClick={signOut} className="nav-link" href="#">
+          <NavLink
+            exact
+            to="/"
+            onClick={signOut}
+            className="nav-link"
+            activeClassName="active-nav-link"
+          >
             Sign Out
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </Fragment>

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Paginator = ({ itemsPerPage, maxItems, paginate }) => {
+const Paginator = ({ itemsPerPage, maxItems, paginate, currentPage }) => {
   const pageNums = [];
 
   //Get all the page numbers that will be rendered
@@ -16,7 +16,7 @@ const Paginator = ({ itemsPerPage, maxItems, paginate }) => {
             <li
               onClick={() => paginate(num)}
               key={num}
-              className="page-item"
+              className={`${num === currentPage ? "active" : ""} page-item`}
               aria-current="page"
             >
               <span className="page-link">{num}</span>

@@ -3,14 +3,16 @@ export const createContact = (contactData) => {
   return async (dispatch, getState, { getFirebase }) => {
     const firebase = getFirebase();
 
+    const dbRef = firebase.database().ref("contacts");
+    const contact = {
+      ...contactData,
+      isFavorite: false,
+    };
+
     try {
-      const dbRef = firebase.database().ref("contacts");
-      const contact = {
-        ...contactData,
-        isFavorite: false,
-      };
-      await dbRef.push(contact);
-      dispatch({ type: CONTACT_CREATE_SUCCESS });
+      dbRef.push(contact).then((res) => {
+        dispatch({ type: CONTACT_CREATE_SUCCESS });
+      });
     } catch (error) {
       dispatch({ type: CONTACT_CREATE_ERROR });
     }

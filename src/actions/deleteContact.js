@@ -5,7 +5,7 @@ export const deleteContact = (id) => {
     const firebase = getFirebase();
 
     try {
-      return firebase
+      firebase
         .database()
         .ref(`/contacts/${id}`)
         .remove()

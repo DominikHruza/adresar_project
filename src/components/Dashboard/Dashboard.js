@@ -44,13 +44,13 @@ const Dashboard = ({
         setContacts(contactItems);
       }
     }
-  }, [contactItems]);
+  }, [contactItems, searchBy]);
 
   useEffect(() => {
     //For pagination
     currentContacts = contacts.slice(idxFirstContact, idxLastContact);
     setPagedContacts(currentContacts);
-  }, [contacts, currentPage, sortBy, itemsPerPage]);
+  }, [contacts, currentPage, sortBy, itemsPerPage, searchBy]);
 
   const renderContacts = (currentContacts) => {
     if (currentContacts.length > 0)
@@ -70,16 +70,18 @@ const Dashboard = ({
   };
 
   const onSearchInput = (term) => {
-    const filteredContacts = contactItems.filter((contact) => {
+    const filteredContacts = contactItems.filter((contactItem) => {
       //If search by email
 
       if (searchBy === "email") {
         return (
-          contact.contact.toLowerCase().indexOf(term) !== -1 &&
-          contact.contactType.toLowerCase() === "email"
+          contactItem.contact.toLowerCase().indexOf(term.toLowerCase()) !==
+            -1 && contactItem.contactType.toLowerCase() === "email"
         );
       } else {
-        return contact[searchBy].toLowerCase().indexOf(term) !== -1;
+        return (
+          contactItem[searchBy].toLowerCase().indexOf(term.toLowerCase()) !== -1
+        );
       }
     });
 
@@ -137,11 +139,14 @@ const Dashboard = ({
         </div>
         <Alert />
         {renderContacts(pageContacts)}
-        <Paginator
-          itemsPerPage={itemsPerPage}
-          maxItems={contacts.length}
-          paginate={paginate}
-        />
+        {pageContacts && (
+          <Paginator
+            itemsPerPage={itemsPerPage}
+            maxItems={contacts.length}
+            paginate={paginate}
+            currentPage={currentPage}
+          />
+        )}
       </div>
     </div>
   );

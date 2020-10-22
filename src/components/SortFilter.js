@@ -7,10 +7,12 @@ const SortFilter = ({ onSortBySelect }) => {
         name="contactType"
         id="inputState"
         className="form-control"
-        defaultValue="Sort by"
+        defaultValue="default"
         onChange={(e) => onSortBySelect(e.target.value)}
       >
-        <option>Sort By</option>
+        <option value="default" disabled>
+          Sort By
+        </option>
         <option value="lastname-asc">Lastname (A-Z)</option>
         <option value="lastname-desc">Lastname (Z-A)</option>
       </select>

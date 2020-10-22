@@ -14,7 +14,7 @@
 }
 
 .add-contact-btn:hover {
-  background: #79d70f;
+  background: #26ac79;
 }
 #dashboard .card {
   color: #333;
@@ -30,11 +30,20 @@
   background: none;
   outline: none;
 }
+#dashboard .card .details-btn:hover {
+  color: #007bff;
+}
+#dashboard .card .favorite-btn:hover {
+  color: #d9bd00;
+}
+#dashboard .card .favorite-btn {
+  cursor: pointer;
+}
 
 #dashboard .card .favorite-icon,
 #dashboard .card i {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.7rem;
+  margin-bottom: 0.5rem;
 }
 
 #dashboard .isFavorite {
@@ -60,7 +69,7 @@
 
 .card-item p {
   min-height: 1.5rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 .card-item h5 {
   font-weight: 800;
@@ -121,7 +130,7 @@
 }
 
 #dashboard .filter-contacts {
-  margin-right: 1.5rem;
+  margin-right: 4rem;
 }
 
 #dashboard .filter-contacts select {

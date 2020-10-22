@@ -12,7 +12,7 @@ export const fetchContacts = (contactData) => {
     try {
       var userId = firebase.auth().currentUser.uid;
 
-      return firebase
+      firebase
         .database()
         .ref("/contacts")
         .once("value")
@@ -40,7 +40,7 @@ export const getSingleContact = (id) => {
     const firebase = getFirebase();
 
     try {
-      return firebase
+      firebase
         .database()
         .ref(`/contacts/${id}`)
         .once("value")
