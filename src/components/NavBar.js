@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="container">
-        <a className="navbar-brand" href="/adresar">
+        <a className="navbar-brand mr-5" href="/adresar">
           Adresar
         </a>
         <button
@@ -21,9 +21,7 @@ const NavBar = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <NavLinks />
-          </ul>
+          <NavLinks />
         </div>
       </div>
     </nav>
