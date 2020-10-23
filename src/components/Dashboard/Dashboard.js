@@ -37,7 +37,6 @@ const Dashboard = ({
 
     //Watch for serch by changes and prop contacts
     useEffect(() => {
-        console.log("uso");
         setPagedContacts([]);
         setContacts([]);
         if (contactItems.length > 0) {

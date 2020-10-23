@@ -45,7 +45,7 @@ const SignIn = ({ signIn, setAlert, authError, history, auth }) => {
             <div className="form-wrapper">
                 <h1>Sign Up</h1>
                 <Alert />
-                <form onSubmit={handleSubmit}>
+                <form>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
                         <input
@@ -80,7 +80,11 @@ const SignIn = ({ signIn, setAlert, authError, history, auth }) => {
                             }}
                         />
                     </div>
-                    <button type="submit" className="btn btn-success">
+                    <button
+                        type="submit"
+                        className="btn btn-success"
+                        onClick={handleSubmit}
+                    >
                         Sign Up
                     </button>
                 </form>
